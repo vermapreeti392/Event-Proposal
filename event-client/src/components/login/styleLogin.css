@@ -1,0 +1,35 @@
+.mainLogin{
+  background-image: url("../../Assests/vishnu-r-nair-m1WZS5ye404-unsplash.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+.navbar{
+  height: 15vh;
+  padding-left: 110px;
+  padding-top: 40px;
+}
+.body{
+  width: 100vw;
+  height: 85vh;
+  display: flex;
+}
+.rightSide{
+  width: 40vw;
+  height: 85vh;
+  box-sizing: border-box;
+  padding-top: 20vh;
+  padding-left: 20px;
+}
+.leftSide{
+  height: 85vh;
+  box-sizing: border-box;
+  width: 60vw;
+  padding-left: 8vw;
+  padding-right: 15vw;
+  padding-top: 30vh;
+  font-size: 45px;
+  color:white
+}

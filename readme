@@ -1,0 +1,18 @@
+--> Register for User/Vendor 
+--> User/Vendor will fill form and we will check do some check in frontend like all fields are filled,etc
+-->  POST ("/api/vendorRegister" or "/api/userRegister")
+-->  Vendor Database model/User Database model  
+ --> this will save the data of User/Vendor in the database
+
+
+--> User/Vendor Login 
+--> POST("/vendorLogin" or "/userLogin") 
+--> this API will check the email of the User/Vendor if the User/Vendor is Registered User/Vendor , after that it will check the password of corresponding User/Vendor and get them to Log in to their accounts. 
+ --> when user successfully login to their account then JWT will be stored in local storage or cookies 
+ --> after that if User/Vendor will perform any action and call API then request will be sent with token that will verify in backend whether the request is authorized or not after it will do that task
+
+
+ --> LogOut 
+ --> For logging out a user We will delete the token from local Storage or cookies and make the user to get back Login Page
+ 
+  
