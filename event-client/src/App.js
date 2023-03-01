@@ -1,23 +1,14 @@
-import logo from './logo.svg';
 import './App.css';
+import CreateProposal from './components/Create Proposal/CreateProposal';
+import { useState } from 'react';
+import ProposalList from './components/proposal List/ProposalList';
 
 function App() {
+  const [modal, setModal ] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App">      
+      <ProposalList setModal={setModal}/>
+      {modal && <CreateProposal setModal={setModal}/>}
     </div>
   );
 }
