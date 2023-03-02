@@ -1,12 +1,14 @@
 // import { useNavigate } from "react-router-dom"
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import Navbar from "../proposal List/Navbar";
 import "./CreateProposal.css"
 
-const CreateProposal = ({ setModal }) => {
+const CreateProposal = () => {
   // const navigate = useNavigate()
   const hiddenInputFile = useRef(null)
   const [image, setImage] = useState("")
-
+  const navigate = useNavigate()
   // for preview of file
   const loadfile = (event) => {
     var output = document.getElementById('output');
@@ -20,6 +22,8 @@ const CreateProposal = ({ setModal }) => {
     hiddenInputFile.current.click()
   }
   return (
+    <>
+    <Navbar/>
     <div className="darkBg"
     //  onClick={()=>setModal(false)}
     >
@@ -29,7 +33,7 @@ const CreateProposal = ({ setModal }) => {
             <h5 className="heading">Create Proposal</h5>
           </div>
           <button className="closeBtn"
-            onClick={() => setModal(false)}
+            onClick={()=>navigate('/proposalList')}
           >x</button>
         </div>
         <hr style={{ width: "94%", margin: "5px auto", opacity: "0.8" }} />
@@ -116,8 +120,9 @@ const CreateProposal = ({ setModal }) => {
           </div>
         </div>
       </div>
-
     </div>
+    </>
+    
 
   )
 }

@@ -1,13 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './Navbar'
 import "./ProposalList.css"
 import {MdSearch } from "react-icons/md";
 import {MdFilterAlt} from 'react-icons/md'
 import {MdDeleteOutline} from 'react-icons/md'
 import {MdModeEditOutline} from 'react-icons/md'
+import { useNavigate } from 'react-router-dom';
 
-export default function ProposalList({setModal}) {
-
+export default function ProposalList() {
+  const navigate = useNavigate();
+  const [proposal, setProposal] = useState([]); 
+  useEffect( ()=>{
+    const getItem = async () => {
+      try {
+        const resp = await fetch('http://localhost:5000/allProposal')
+          .then(res => res.json())
+          .then(data => {
+            setProposal(data.data);
+           console.log(data.data);
+          })
+      }
+      catch (e) {
+        console.log(e)
+      }
+    }
+    getItem()
+  }, [])
   return (
     <>
     <Navbar/>
@@ -20,60 +38,68 @@ export default function ProposalList({setModal}) {
         </div>
         <div>
           <span> <MdFilterAlt className='filteric mt-2'/> </span>
-         <button className='create-btn' onClick={()=>setModal(true)}>Create</button>
+         <button className='create-btn' onClick={()=>navigate('/createPrposal')}>Create</button>
         </div>
      </div>
      <div className='event-details mt-2 py-2 px-3'>
-      <div>
-       <h4>Event Nmae</h4>
-       <p>paragraph .,kjkl' ..................................</p>
+      {
+      proposal.map((item,index)=>{
+          return(
+            <>
+             <div>
+       <h6>{item.eventName}</h6>
+       <p>{item.description}</p>
       </div>
       <div className='event-main'>
            <div className='event-head'>
-             <div>
+             <div className='m'>
                <p>
-                 event type
+                 Event Type
                </p>
-               <p>marriage</p>
+               <p>{item.eventType}</p>
              </div>
              <div>
                <p>
                  Proposal Type
                </p>
                <p>
-                venue
+                {item.proposalType}
                </p>
              </div>
              <div>
                <p>
-                 date from
+                 Date From
                </p>
                <p>
-                02/06/2023
-               </p>
-             </div>
-             <div>
-               <p>
-                 DateTo
-               </p>
-               <p>
-                04/09/2023
+                {item.date_from}
                </p>
              </div>
              <div>
                <p>
-                 budget
+                 Date To
                </p>
                <p>
-               5555555
+                {item.date_to}
+               </p>
+             </div>
+             <div>
+               <p>
+                 Budget
+               </p>
+               <p>
+               {item.budget}
                </p>
              </div>
            </div>
-           <div>
-              <MdModeEditOutline/>
-              <MdDeleteOutline/>              
+           <div className='d-flex gap-4'>
+              <MdModeEditOutline className='editic' onClick={()=>navigate('/edit')}/>
+              <MdDeleteOutline className='dltic'/>              
            </div>
       </div>
+            </>
+          )
+      })
+      }
      </div>
    </div>
     </>

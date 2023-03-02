@@ -2,14 +2,13 @@ const express = require('express');
 const requirelogin = require('../middlewares/requirelogin');
 const router = express.Router();
 const proposalSchema = require('../models/proposal');
+const { events } = require('../models/vendor');
 
 // posting data
 router.post('/createProposal', requirelogin, async(req,res)=>{
 try{
     const {eventName,place,proposalType,eventType,budget,date_from,date_to,description,
-        images,food,events} = req.body;
-    // console.log(eventName,place,proposalType,eventType,budget,date_from,date_to,description,
-    //     images,food,events);
+        images,food,events} = req.body;    
     if(!eventName){
         return res.status(404).json({
             status: "failed",
@@ -38,11 +37,11 @@ try{
 })
 
 // fetch data
-router.get('/allProposal', requirelogin, async(req,res)=>{
+router.get('/allProposal', async(req,res)=>{
     
     try{
-        const data = await proposalSchema.find({postedBy:req.user._id});
-           console.log(data); 
+        const data = await proposalSchema.find();
+           //console.log(data); 
     return res.status(200).json({
         status: "success",
         data
@@ -56,6 +55,38 @@ router.get('/allProposal', requirelogin, async(req,res)=>{
    }
     
 })
+// update proposal
+router.put('/update/:id', async(req,res)=>{
+    try{
+        let data = await proposalSchema.findByIdAndUpdate({_id : req.params.id}, req.body);                   
+         return res.status(200).json({                
+             message: "updated successfully",
+             data            
+         })    
+     }
+    catch(e){
+     res.status(422).json({
+         status: "failure",
+         error: e.error
+     })
+    }
+ })
 
-
+// delete proposal
+router.delete('/delete/:id', async(req,res)=>{
+    try{
+     const data = await proposalSchema.findOne({_id: req.params.id})  
+         data.remove()
+         return res.status(200).json({
+             message: "post deleted successfully"
+         })
+    
+     }
+    catch(e){
+     res.status(422).json({
+         status: "failure",
+         error: e.error
+     })
+    }
+ })
 module.exports = router;

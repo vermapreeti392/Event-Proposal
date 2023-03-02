@@ -12,8 +12,8 @@ export default function Navbar() {
                 <div className="collapse navbar-collapse" id="navbarText">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">                       
                     </ul>
-                    <span className="navbar-text me-4">
-                        vendor name                               
+                    <span className="navbar-text me-4 text-primary">
+                        Vendor Name                               
                     </span>
                     <span className='me-5'><img src={require('../../assets/img1.jpg')} alt="" style={{borderRadius: '50%'}} height="50px" width="50px" /></span>                
                 </div>

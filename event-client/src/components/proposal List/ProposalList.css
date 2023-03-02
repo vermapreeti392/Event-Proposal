@@ -1,7 +1,7 @@
 .navbar {
     border-bottom: 2px solid #8080802e;
     border-top: 1px solid #8080802e;
-    box-shadow: 2px 3px #8080802e;
+    box-shadow: 2px 3px #8080802e;    
 }
 
 .container {
@@ -52,8 +52,14 @@
 }
 .event-head{
     display: flex;
-   gap: 4rem;
+        
 }
 .event-head p{
     margin-bottom: 0rem;
+}
+.editic{
+    font-size: xx-large;
+}
+.dltic{
+    font-size: xx-large;
 }
