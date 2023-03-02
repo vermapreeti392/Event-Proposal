@@ -4,7 +4,7 @@ import { useState } from 'react';
 import ProposalList from './components/proposal List/ProposalList';
 
 function App() {
-  const [modal, setModal ] = useState(true);
+  const [modal, setModal ] = useState(false);
   return (
     <div className="App">      
       <ProposalList setModal={setModal}/>

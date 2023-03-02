@@ -8,17 +8,15 @@ dotenv.config()
 const secret = process.env.SECRET_KEY
 router.post("/login/vendor", async (req, res) => {
   const { contact, password } = req.body;
-//   console.log(req.body)
+  //   console.log(req.body)
   try {
     if (!contact || !password) {
       return res.status(400).json({
         status: "fail",
-        message: "Please provide an Contact and a password.",
+        message: "Please provide a Contact and a password.",
       });
     }
-
     const user = await Vendor.findOne({ contact });
-
     if (!user) {
       return res.status(400).json({
         status: "fail",
@@ -30,27 +28,23 @@ router.post("/login/vendor", async (req, res) => {
       return res.status(401).json({
         status: "fail",
         message: "Invalid Credentials",
-      }); 
+      });
     }
-
     const payload = {
       user: {
-        name:user.name,
-        contact:user.contact,
-        email:user.email
+        name: user.name,
+        contact: user.contact,
+        email: user.email
       },
     };
     const token = jwt.sign(payload, secret, {
       expiresIn: '1000m',
     });
-
     res.status(200).json({
       status: "Successfully Login",
       data: { token, user },
     });
-    
-
-  } catch (err) {    
+  } catch (err) {
     res.status(409).json({
       status: "fail",
       message: err.message,
