@@ -5,7 +5,7 @@ const proposalSchema = require('../models/proposal');
 const { events } = require('../models/vendor');
 
 // posting data
-router.post('/createProposal', async(req,res)=>{
+router.post('/createProposal', requirelogin, async(req,res)=>{
 try{
     const {eventName,place,proposalType,eventType,budget,date_from,date_to,description,
         albums,food,events} = req.body;    
@@ -38,10 +38,10 @@ try{
 })
 
 // fetch data
-router.get('/allProposal', async(req,res)=>{
+router.get('/allProposal', requirelogin, async(req,res)=>{
     
     try{
-        const data = await proposalSchema.find();
+        const data = await proposalSchema.find({postedBy:req.user._id}).populate('postedBy', "_id name");
            //console.log(data); 
     return res.status(200).json({
         status: "success",
@@ -56,6 +56,25 @@ router.get('/allProposal', async(req,res)=>{
    }
     
 })
+
+// find on behalf of id
+router.get('/proposal/:id', async(req,res)=>{
+    try{
+        const data = await proposalSchema.findOne({_id: req.params.id});
+            
+            return res.status(200).json({
+                status: "success",
+                data
+            })
+       
+        }
+       catch(e){
+        res.status(422).json({
+            status: "failure",
+            error: e.error
+        })
+       }
+}) 
 // update proposal
 router.put('/update/:id', async(req,res)=>{
     try{

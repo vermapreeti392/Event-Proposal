@@ -31,11 +31,6 @@ const CreateProposal = () => {
 //  const notifyError = (msg) => toast.error(msg);
 //  const notifyMsg = (msg)=>toast.success(msg);
 
- 
-    
- 
-
- 
   const post = async ()=>{
     if(imgurl){        
       // saving imageurl and caption in mongo
@@ -43,7 +38,7 @@ const CreateProposal = () => {
       method:"post",
       headers:{
           "Content-Type": "application/json",
-          // "Authorization": "Bearer "+ localStorage.getItem("jwt")
+          "authenticate":localStorage.getItem("jwt")
       },
       body:JSON.stringify({
         eventName: eventName,
@@ -80,8 +75,7 @@ const CreateProposal = () => {
 
   // upload pic in cloudnary
 
-  const shareImage = () => {
-    // console.log(image, caption)
+  const shareImage = () => {  
     
     const data = new FormData();
     for (let i = 0; i < image.length; i++) {
@@ -98,11 +92,7 @@ const CreateProposal = () => {
       setImgurl(newObj);
       console.log(imgurl);
       if (uploadedImages.length === image.length) {        
-        post();    
-      //   setImgurl(uploadedImages);    
-      //    post();
-      //    console.log(imgurl);
-      //   //console.log(uploadedImages)
+        post();      
        }
     })
     .catch(e=>console.log(e))

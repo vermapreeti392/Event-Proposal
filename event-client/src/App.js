@@ -22,7 +22,7 @@ function App() {
       <Route path='/userregister' element= {<UserRegister />} ></Route>     
       <Route path='/proposalList' element= {<ProposalList />} ></Route>   
       <Route path='/createPrposal' element = {<CreateProposal/>}></Route>
-      <Route path='/edit' element = {<UpdateProposal/>}></Route>
+      <Route path='/update/:id' element = {<UpdateProposal/>}></Route>
     </Routes>    
     </div>    
     </BrowserRouter>    

@@ -6,14 +6,18 @@ import {MdFilterAlt} from 'react-icons/md'
 import {MdDeleteOutline} from 'react-icons/md'
 import {MdModeEditOutline} from 'react-icons/md'
 import { useNavigate } from 'react-router-dom';
-
+import { Link } from 'react-router-dom';
 export default function ProposalList() {
   const navigate = useNavigate();
   const [proposal, setProposal] = useState([]); 
   useEffect( ()=>{
     const getItem = async () => {
       try {
-        const resp = await fetch('http://localhost:5000/allProposal')
+        const resp = await fetch('http://localhost:5000/allProposal',{
+          headers:{
+            "authenticate":localStorage.getItem("jwt")
+        }
+        })
           .then(res => res.json())
           .then(data => {
             setProposal(data.data);           
@@ -104,7 +108,9 @@ export default function ProposalList() {
              </div>
            </div>
            <div className='d-flex gap-4'>
-              <MdModeEditOutline className='editic' onClick={()=>navigate('/edit')}/>
+              <Link to={"/update/"+item._id}>
+              <MdModeEditOutline className='editic'/>
+              </Link>
               <MdDeleteOutline className='dltic' onClick={()=>{handleDelete(item._id)}}/>              
            </div>
       </div>
