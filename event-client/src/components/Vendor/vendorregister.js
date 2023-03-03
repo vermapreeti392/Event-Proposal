@@ -6,6 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
 
 const VendorRegister = () => {
+    
     const navigate = useNavigate()
     const [data, updatereg] = useState({ email: "", password: "", name: "", contact: "", confirmpassword: "" })
     const hanlde = async () => {
@@ -83,15 +84,16 @@ const VendorRegister = () => {
                     theme: "dark",
                     });
             }else if(res.message === "Vendor Created Successfully"){
-                toast('Account Created Successfully', {
+                console.log(res.message);
+                toast.success("Vendor Created Successfully", {
                     position: "top-right",
                     autoClose: 3000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
+                    // hideProgressBar: false,
+                    // closeOnClick: true,
+                    // pauseOnHover: true,
+                    // draggable: true,
+                    // progress: undefined,
+                    // theme: "light",
                 });
                 navigate("/")
             }
