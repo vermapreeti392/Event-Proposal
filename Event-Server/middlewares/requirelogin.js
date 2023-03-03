@@ -18,7 +18,7 @@ const Authorization = async (req,res,next)=>{
        }
        req.user = data
        next()
-
+       
    } catch (error) {
        console.log("error in fetching user -->" + error.message)
        res.status(401).json({
