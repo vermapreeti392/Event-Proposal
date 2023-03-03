@@ -1,8 +1,7 @@
-
 const Vendor = require("../models/vendor")
 const jwt = require("jsonwebtoken")
 const secret = process.env.SECRET_KEY
-const Authorization = async (req,res,next)=>{
+module.exports = async (req,res,next)=>{
     try {
        const {authenticate = ""} = req.headers
        if(!authenticate){
@@ -18,7 +17,7 @@ const Authorization = async (req,res,next)=>{
        }
        req.user = data
        next()
-       
+
    } catch (error) {
        console.log("error in fetching user -->" + error.message)
        res.status(401).json({
@@ -26,5 +25,3 @@ const Authorization = async (req,res,next)=>{
        })
    }
 }
-module.exports = Authorization
-

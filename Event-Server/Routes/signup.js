@@ -4,8 +4,6 @@ const bcrypt = require('bcrypt')
 const Vendor = require('../models/vendor')
 const saltRounds = 12
 
-
-
 router.post("/signup/vendor", async(req,res)=>{
     const { name, email, contact, password } = req.body;
     console.log(req.body)
@@ -18,10 +16,10 @@ router.post("/signup/vendor", async(req,res)=>{
       });
     }
 
-    if (password.length < 8) {
+    if (password.length < 6) {
       return res.status(422).json({
         status: "fail",
-        message: "Password should be more than 8 characters long",
+        message: "Password should be more than 6 characters long",
       });
     }
 
@@ -29,31 +27,32 @@ router.post("/signup/vendor", async(req,res)=>{
     if (userEmail) {
       return res.status(408).json({
         status: "fail",
-        message: "User Email already exists.",
+        message: "Vendor Email already exists.",
       });
     }
 
-    let userExist = await Vendor.findOne({ contact });
-    if (userExist) {
+    let vendorExist = await Vendor.findOne({ contact });
+    if (vendorExist) {
       return res.status(409).json({
         status: "fail",
-        message: "User Contact already exists.",
+        message: "Vendor Contact already exists.",        
       });
     }
     let hashedPassword = await bcrypt.hash(password, saltRounds)
-    const user = new Vendor({   
+    const vendor = new Vendor({   
       name,
       email,
       contact,
       password:hashedPassword,
     })
 
-    await user.save()  
+    await vendor.save()  
 
-    console.log(user)
+    // console.log(vendor)
 
     return res.status(201).json({
-      message: "User Created Successfully"
+      message: "Vendor Created Successfully",
+      vendor
     })
 
   } catch (err) {

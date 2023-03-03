@@ -4,14 +4,13 @@ import DetailProposal from "../cards/detailProposal";
 import { Box } from "@mui/system";
 import StandardImageList from "../photos/photos";
 import Button from '@mui/material/Button';
-import Navbar from "../Navbar/navbar";
+
 
 const ProposalPage =()=>{
    
     return (
 
         <>
-        <Navbar/>
 
         <div className="secondary">
             
