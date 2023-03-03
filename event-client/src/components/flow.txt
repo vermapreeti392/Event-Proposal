@@ -1,0 +1,10 @@
+ components required : 2 
+ 1.. create proposal from
+ 2... proposal list
+--------> in the proposal list all the existing proposals will be displayed it will be doe using get api there will be button to create new proposal after clicking on this the form will open 
+---------> for the 1st one -- create a form with the required fields with a button to post after filling the form after posting the 
+ data will be sent to backend and will be saved in to db
+ there will be api to get and post the data in to backend (using fetch or axios)
+
+ 
+ 
