@@ -38,7 +38,7 @@ router.post("/login/vendor", async (req, res) => {
       },
     };
     const token = jwt.sign(payload, secret, {
-      expiresIn: '1000m',
+      expiresIn: '100000m',
     });
     res.status(200).json({
       status: "Successfully Login",

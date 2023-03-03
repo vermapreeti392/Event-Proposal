@@ -5,10 +5,11 @@ const proposalSchema = require('../models/proposal');
 const { events } = require('../models/vendor');
 
 // posting data
-router.post('/createProposal', requirelogin, async(req,res)=>{
+router.post('/createProposal', async(req,res)=>{
 try{
     const {eventName,place,proposalType,eventType,budget,date_from,date_to,description,
-        images,food,events} = req.body;    
+        albums,food,events} = req.body;    
+        console.log(albums);
     if(!eventName){
         return res.status(404).json({
             status: "failed",
@@ -19,7 +20,7 @@ try{
           req.vendor    
         const proposal = await proposalSchema.create({
             eventName,place,proposalType,eventType,budget,date_from,date_to,description,
-            images,food,events,
+            albums,food,events,
             postedBy:req.user});  
 
        return res.status(200).json({

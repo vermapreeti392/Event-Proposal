@@ -51,8 +51,11 @@
     
 }
 .event-head{
-    display: flex;
-        
+    display: flex;  
+    flex-wrap: wrap;      
+}
+.event-head div{
+    margin-right:1.8rem;
 }
 .event-head p{
     margin-bottom: 0rem;

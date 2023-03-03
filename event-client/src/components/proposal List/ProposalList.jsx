@@ -16,8 +16,7 @@ export default function ProposalList() {
         const resp = await fetch('http://localhost:5000/allProposal')
           .then(res => res.json())
           .then(data => {
-            setProposal(data.data);
-           console.log(data.data);
+            setProposal(data.data);           
           })
       }
       catch (e) {
@@ -26,6 +25,18 @@ export default function ProposalList() {
     }
     getItem()
   }, [])
+  
+  // delete item 
+  const handleDelete = async(id)=>{
+      await fetch(`http://localhost:5000/delete/${id}`,{
+        method: 'delete',        
+      })
+      .then(res=>res.json())
+      .then(data=>{
+        setProposal(proposal.filter(proposal => proposal.id!= id));
+        window.location.reload()       
+      })
+  }
   return (
     <>
     <Navbar/>
@@ -41,18 +52,19 @@ export default function ProposalList() {
          <button className='create-btn' onClick={()=>navigate('/createPrposal')}>Create</button>
         </div>
      </div>
-     <div className='event-details mt-2 py-2 px-3'>
+     
       {
       proposal.map((item,index)=>{
           return(
             <>
-             <div>
+            <div className='event-details mt-2 py-2 px-3'>
+            <div>
        <h6>{item.eventName}</h6>
        <p>{item.description}</p>
       </div>
       <div className='event-main'>
            <div className='event-head'>
-             <div className='m'>
+             <div>
                <p>
                  Event Type
                </p>
@@ -93,17 +105,16 @@ export default function ProposalList() {
            </div>
            <div className='d-flex gap-4'>
               <MdModeEditOutline className='editic' onClick={()=>navigate('/edit')}/>
-              <MdDeleteOutline className='dltic'/>              
+              <MdDeleteOutline className='dltic' onClick={()=>{handleDelete(item._id)}}/>              
            </div>
       </div>
+            </div>
             </>
           )
       })
-      }
-     </div>
+      }     
    </div>
-    </>
-    
+    </>    
   )
 }
 
