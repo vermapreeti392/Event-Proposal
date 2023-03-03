@@ -37,6 +37,7 @@ router.post("/login/vendor", async (req, res) => {
         email: user.email
       },
     };
+    
     const token = jwt.sign(payload, secret, {
       expiresIn: '100000m',
     });
