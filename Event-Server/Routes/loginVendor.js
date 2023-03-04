@@ -7,8 +7,7 @@ const router = express.Router()
 dotenv.config()
 const secret = process.env.SECRET_KEY
 router.post("/login/vendor", async (req, res) => {
-  const { contact, password } = req.body;
-  //   console.log(req.body)
+  const { contact, password } = req.body; 
   try {
     if (!contact || !password) {
       return res.status(400).json({

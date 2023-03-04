@@ -6,8 +6,7 @@ const saltRounds = 10
 
 router.post("/userregister" , async (req ,res)=>{
     try{
-        const {name,password,contact,email} = req.body
-        console.log(name , password , contact , email)
+        const {name,password,contact,email} = req.body;        
         let data = await usermodel.findOne({email:email})
         let contacted = await usermodel.findOne({contact:contact})
         if(data !== null){

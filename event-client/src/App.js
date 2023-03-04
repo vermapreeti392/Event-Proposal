@@ -10,8 +10,7 @@ import UserLogin from './components/User/userlogin';
 import UserRegister from './components/User/userregister';
 
 
-function App() {
-  // const [modal, setModal ] = useState(false);
+function App() {  
   return (
     <BrowserRouter>
      <div className="App">  

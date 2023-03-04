@@ -4,15 +4,14 @@ const bcrypt = require('bcrypt')
 const Vendor = require('../models/vendor')
 const saltRounds = 12
 
-router.post("/signup/vendor", async(req,res)=>{
-    const { name, email, contact, password } = req.body;
-    console.log(req.body)
+router.post("/signup/vendor", async (req, res) => {
+  const { name, email, contact, password } = req.body;
 
   try {
     if (!email || !password || !name || !contact) {
       return res.status(422).json({
         status: "fail",
-        message: "Please provide all fields",   
+        message: "Please provide all fields",
       });
     }
 
@@ -35,26 +34,21 @@ router.post("/signup/vendor", async(req,res)=>{
     if (vendorExist) {
       return res.status(409).json({
         status: "fail",
-        message: "Vendor Contact already exists.",        
+        message: "Vendor Contact already exists.",
       });
     }
     let hashedPassword = await bcrypt.hash(password, saltRounds)
-    const vendor = new Vendor({   
+    const vendor = new Vendor({
       name,
       email,
       contact,
-      password:hashedPassword,
+      password: hashedPassword,
     })
-
-    await vendor.save()  
-
-    // console.log(vendor)
-
+    await vendor.save();
     return res.status(201).json({
       message: "Vendor Created Successfully",
       vendor
     })
-
   } catch (err) {
     res.status(400).json({
       status: "fail",

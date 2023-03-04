@@ -55,27 +55,26 @@ export default function ProposalList() {
           <span> <MdFilterAlt className='filteric mt-2'/> </span>
          <button className='create-btn' onClick={()=>navigate('/createPrposal')}>Create</button>
         </div>
-     </div>
-     
+     </div>     
       {
-      proposal.map((item,index)=>{
+      proposal.map((item)=>{
           return(
             <>
-            <div className='event-details mt-2 py-2 px-3'>
-            <div>
-       <h6>{item.eventName}</h6>
+            <div key={item._id} className='event-details mt-2 py-2 px-3' style={{color: "#081838"}}>
+            <div >
+       <h6 style={{textTransform: 'uppercase'}}>{item.eventName}</h6>
        <p>{item.description}</p>
       </div>
       <div className='event-main'>
            <div className='event-head'>
              <div>
-               <p>
+               <p className='text-muted'>
                  Event Type
                </p>
-               <p>{item.eventType}</p>
+               <p >{item.eventType}</p>
              </div>
              <div>
-               <p>
+               <p className='text-muted'>
                  Proposal Type
                </p>
                <p>
@@ -83,23 +82,23 @@ export default function ProposalList() {
                </p>
              </div>
              <div>
-               <p>
-                 Date From
+               <p className='text-muted'>
+               From Date
                </p>
                <p>
                 {item.date_from}
                </p>
              </div>
              <div>
-               <p>
-                 Date To
+               <p className='text-muted'>
+               To Date
                </p>
                <p>
                 {item.date_to}
                </p>
              </div>
              <div>
-               <p>
+               <p className='text-muted'>
                  Budget
                </p>
                <p>

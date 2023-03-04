@@ -1,7 +1,9 @@
 import React from 'react'
 import './ProposalList.css'
 export default function Navbar() {
-    return (
+    const name = JSON.parse(localStorage.getItem('vendorInfo'));
+    // console.log(name);
+    return (       
 
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
@@ -13,7 +15,7 @@ export default function Navbar() {
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">                       
                     </ul>
                     <span className="navbar-text me-4 text-primary">
-                        Vendor Name                               
+                        {name}                               
                     </span>
                     <span className='me-5'><img src={require('../../assets/img1.jpg')} alt="" style={{borderRadius: '50%'}} height="50px" width="50px" /></span>                
                 </div>
