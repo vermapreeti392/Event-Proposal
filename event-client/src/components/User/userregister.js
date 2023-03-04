@@ -127,6 +127,7 @@ const UserRegister = () => {
                     <button className="btn" onClick={hanlde}>REGISTER</button>
                 </div>
             </div>
+            
             <ToastContainer />
         </div>
     )
