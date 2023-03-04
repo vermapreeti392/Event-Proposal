@@ -38,13 +38,13 @@ export default function ProposalList() {
       handleSearch();
     }
     
-  }, [])
+  }, [searchProposal])
   
   const handleSearch = ()=>{
-    const data = proposal.filter((proposal)=>
-      proposal.eventName.toLowerCase().includes(proposal.toLowerCase())
+    const data = proposal.filter(proposals=>
+      proposals.eventName.toLowerCase().includes(searchProposal.toLowerCase())
     )
-    setSearchProposal(data);
+    setProposal(data);
   }
   // delete item 
   const handleDelete = async(id)=>{
