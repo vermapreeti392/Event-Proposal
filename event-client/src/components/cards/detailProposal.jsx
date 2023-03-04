@@ -17,7 +17,7 @@ export default function DetailProposal(props) {
         component="img"
         alt="green iguana"
         height="140"
-        image="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8cGFydHl8ZW58MHx8MHx8&w=1000&q=80"
+        image={props.cardData.albums[0].array[0]}
       />
       <div className='idPart'> ID:0001</div>
       <div className='outerBox'>

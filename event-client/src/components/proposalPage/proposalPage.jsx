@@ -17,12 +17,12 @@ const ProposalPage =(props)=>{
         <div className="secondary">
             
             <div className="proposalBlock">
-                    <Box sx={{
+                    <Box onClick={()=>{props.proposalClicked(false)}} sx={{
                         pl:1.5,
                         pb:1,
                         fontWeight:"600",
                         fontSize:20,
-                        color:"#484848"
+                        color:"#484848",
                     }}>{`Proposal < John Contract`}</Box>
                     <Box></Box>
                     <Box sx={{
@@ -69,7 +69,7 @@ const ProposalPage =(props)=>{
                     }}>
                       My Album
                     </Box>
-                  <StandardImageList/>
+                  <StandardImageList photos={props?.data?.albums[0].array}/>
                 
                 </div>
                 <div className="itemB"> 

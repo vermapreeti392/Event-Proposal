@@ -31,7 +31,9 @@ const HomePage =()=>{
     axios.get("http://localhost:5000/findAllProposal" , config).then((res) => {
         
         if (res.status === 200) {
+            console.log(res.data.data[3].albums[0].array[0])
             setProposal(res.data.data)
+
         }
     }).catch((err) => {
       console.log(err)

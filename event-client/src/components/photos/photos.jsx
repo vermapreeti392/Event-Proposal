@@ -3,16 +3,18 @@ import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
 import "./photoStyle.css"
 
-export default function StandardImageList() {
+export default function StandardImageList(props) {
+
+  console.log(props.photos)
   return (
     <div className='photos'>
     <ImageList sx={{ width: 312, height: 245 }} cols={2} rowHeight={170}>
-      {itemData.map((item) => (
+      {props.photos.map((item,index) => (
         <ImageListItem key={item.img}>
           <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
+            src={item}
+            srcSet={item}
+            // alt={item.title}
             loading="lazy"
           />
         </ImageListItem>
