@@ -7,6 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import { useState } from "react";
 import CloseIcon from '@mui/icons-material/Close';
 import ProposalPage from "../proposalPage/proposalPage";
+import Navbar from "../proposal List/Navbar";
 
 
 
@@ -45,7 +46,9 @@ const HomePage =()=>{
   
 
     return(
-        <>{
+        <>
+        <Navbar/>
+        {
             isProposalClicked?
             <div>
                 <ProposalPage proposalClicked={proposalClicked} setSelected={setSelected} data={selectedData}/>

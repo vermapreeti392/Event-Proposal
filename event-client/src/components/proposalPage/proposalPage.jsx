@@ -11,8 +11,7 @@ const ProposalPage =(props)=>{
    
     return (
 
-        <>
-        <Navbar/>
+        <>       
 
         <div className="secondary">
             
