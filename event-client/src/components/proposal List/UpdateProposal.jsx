@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import {  toast } from 'react-toastify';
 import Navbar from "./Navbar";
 import '../Create Proposal/CreateProposal.css'
 
@@ -25,16 +26,15 @@ const UpdateProposal = (props) => {
   // // getting img from cloudinary
   const [imgurl, setImgurl] = useState({ array: [] });
 
-  // toast function
-  //  const notifyError = (msg) => toast.error(msg);
-  //  const notifyMsg = (msg)=>toast.success(msg);
+ // toast function
+   
+   const notifyMsg = ()=>toast.success("Updation done Successfully");
   const [data, setData] = useState([])
 
   useEffect(() => {
     const data = async () => {
       await fetch(`http://localhost:5000/proposal/${id}`, {
-      })
-      
+      })      
         .then(res => res.json())
         .then(data => {
           console.log(data.data);
@@ -73,7 +73,7 @@ const UpdateProposal = (props) => {
       })
     }).then(res => res.json())
       .then(data => {
-        // notifyMsg(data.message)
+         notifyMsg()
         navigate("/proposalList")
       }).catch(e => console.log(e));
   }

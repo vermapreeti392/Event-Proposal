@@ -35,6 +35,21 @@ router.post('/createProposal', requirelogin, async (req, res) => {
     }
 })
 
+router.get('/getproposal',async (req,res)=>{
+    try{
+        const data = await proposalSchema.find();
+        return res.status(200).json({
+            status: "success",
+            data
+        })
+    }
+    catch(e){
+        res.status(422).json({
+            status: "failure",
+            error: e.error,
+        })
+    }
+})
 // fetch data
 router.get('/allProposal', requirelogin, async (req, res) => {
     try {

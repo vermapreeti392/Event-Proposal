@@ -1,6 +1,7 @@
 // import { useNavigate } from "react-router-dom"
 import { useEffect } from "react";
 import { useRef, useState } from "react";
+import {  toast } from 'react-toastify';
 import { useNavigate } from "react-router-dom";
 import Navbar from "../proposal List/Navbar";
 import "./CreateProposal.css"
@@ -28,8 +29,8 @@ const CreateProposal = () => {
   //console.log(imgurl)
   
  // toast function
-//  const notifyError = (msg) => toast.error(msg);
-//  const notifyMsg = (msg)=>toast.success(msg);
+  const notifyError = () => toast.error("please provide all fields");
+  const notifyMsg = ()=>toast.success("poposal created successfully");
 
   const post = async ()=>{
     if(imgurl){        
@@ -56,22 +57,17 @@ const CreateProposal = () => {
       })
     }).then(res =>res.json()).then(data=>
      { if(data.error){
-      console.log(data.error)
-      // notifyError(data.error)
+      //console.log(data.error)
+       notifyError()
       }
       else{
-          console.log(data)
-          // notifyMsg(data.message)
-          navigate("/proposalList")
-          
-          
+         // console.log(data)  
+          notifyMsg()        
+          navigate("/proposalList")               
       }
   }).catch(e=>console.log(e))
   }
    }
-
-
-
 
   // upload pic in cloudnary
 
@@ -194,7 +190,7 @@ const CreateProposal = () => {
                 {/* <img id="output" /> */}
                 <input id="output" className="fileinp" multiple type="file" accept="image/*" onChange={(e) => { loadfile(e); setImage(e.target.files) }} ref={hiddenInputFile} style={{ display: "none" }} />
                 <div id="galeria">
-                  <img src="" alt="" />
+                  <img src={require('../../assets/img1.jpg')} alt="" />
                 </div>
               </div>
               <div>
