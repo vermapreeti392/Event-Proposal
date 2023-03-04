@@ -84,22 +84,14 @@ const VendorRegister = () => {
                     theme: "dark",
                     });
             }else if(res.message === "Vendor Created Successfully"){
-                console.log(res.message);
+                //console.log(res.message);
                 toast.success("Vendor Created Successfully", {
                     position: "top-right",
-                    autoClose: 3000,
-                    // hideProgressBar: false,
-                    // closeOnClick: true,
-                    // pauseOnHover: true,
-                    // draggable: true,
-                    // progress: undefined,
-                    // theme: "light",
-                });
+                    autoClose: 3000,                    
+                });                
                 navigate("/")
-            }
-            
-        }
-        
+            }            
+        }        
     }
     const handle2 = () =>{
         navigate("/userregister")

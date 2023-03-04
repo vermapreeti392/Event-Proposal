@@ -1,6 +1,6 @@
 import './App.css';
 import CreateProposal from './components/Create Proposal/CreateProposal';
-// import { useState } from 'react';
+import {ToastContainer} from "react-toastify";
 import {BrowserRouter, Routes, Route} from "react-router-dom"; 
 import ProposalList from './components/proposal List/ProposalList';
 import UpdateProposal from './components/proposal List/UpdateProposal';
@@ -12,8 +12,7 @@ import HomePage from './components/home/homePage';
 
 
 
-function App() {
-  // const [modal, setModal ] = useState(false);
+function App() {  
   return (
     <BrowserRouter>
      <div className="App">  
@@ -25,8 +24,9 @@ function App() {
       <Route path='/proposalList' element= {<ProposalList />} ></Route>   
       <Route path='/createPrposal' element = {<CreateProposal/>}></Route>
       <Route path='/update/:id' element = {<UpdateProposal/>}></Route>
-      <Route path='/home' element = {<HomePage/>}></Route>
-    </Routes>    
+      <Route path='/home' element = {<HomePage/>}></Route>  
+    </Routes>  
+    <ToastContainer theme="dark" />  
     </div>    
     </BrowserRouter>    
   );

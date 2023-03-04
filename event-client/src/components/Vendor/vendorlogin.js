@@ -33,7 +33,7 @@ const VendorLogin = () => {
                 })
             })
             const res = await response.json()
-            console.log(res.message);
+            //console.log(res.message);
             
             if(res.message === "User does not exists" ){
                 toast.warn('User not Exists', {
@@ -59,6 +59,7 @@ const VendorLogin = () => {
                     });
             }else  if(res.data.token){
                 localStorage.setItem("jwt",res.data.token)
+                localStorage.setItem("vendorInfo", JSON.stringify(res.data.user.name));
                 toast('Login Successfull', {
                     position: "top-right",
                     autoClose: 3000,
