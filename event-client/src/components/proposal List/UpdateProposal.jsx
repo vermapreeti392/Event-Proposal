@@ -33,7 +33,7 @@ const UpdateProposal = (props) => {
 
   useEffect(() => {
     const data = async () => {
-      await fetch(`http://localhost:5000/proposal/${id}`, {
+      await fetch(`https://event-proposal.onrender.com/proposal/${id}`, {
       })      
         .then(res => res.json())
         .then(data => {
@@ -54,7 +54,7 @@ const UpdateProposal = (props) => {
     data();
   }, [])
   const updateData = async () => {
-    await fetch(`http://localhost:5000/update/${id}`, {
+    await fetch(`https://event-proposal.onrender.com/update/${id}`, {
       method: "put",
       headers: {
         "Content-Type": "application/json"

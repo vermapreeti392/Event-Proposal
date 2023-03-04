@@ -38,7 +38,7 @@ const CreateProposal = () => {
   const post = async ()=>{
     if(imgurl){        
       // saving imageurl and caption in mongo
-   await fetch("http://localhost:5000/createProposal",{
+   await fetch("https://event-proposal.onrender.com/createProposal",{
       method:"post",
       headers:{
           "Content-Type": "application/json",

@@ -43,7 +43,7 @@ const UserRegister = () => {
                 theme: "dark",
                 });
         }else{
-            const response = await fetch("http://localhost:5000/userregister", {
+            const response = await fetch("https://event-proposal.onrender.com/userregister", {
                 method: 'POST',
                 mode : "cors",
                 headers: {

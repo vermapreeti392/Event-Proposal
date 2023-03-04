@@ -17,7 +17,7 @@ export default function ProposalList() {
   useEffect( ()=>{
     const getItem = async () => {
       try {
-        const resp = await fetch('http://localhost:5000/allProposal',{
+        const resp = await fetch('https://event-proposal.onrender.com/allProposal',{
           headers:{
             "authenticate":localStorage.getItem("jwt")
         }
@@ -48,7 +48,7 @@ export default function ProposalList() {
   }
   // delete item 
   const handleDelete = async(id)=>{
-      await fetch(`http://localhost:5000/delete/${id}`,{
+      await fetch(`https://event-proposal.onrender.com/delete/${id}`,{
         method: 'delete',        
       })
       .then(res=>res.json())

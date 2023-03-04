@@ -20,7 +20,7 @@ const VendorLogin = () => {
                 theme: "dark",
                 });
         }else{
-            const response = await fetch("http://localhost:5000/login/vendor", {
+            const response = await fetch("https://event-proposal.onrender.com/login/vendor", {
                 method: 'POST',
                 mode : "cors",
                 headers: {

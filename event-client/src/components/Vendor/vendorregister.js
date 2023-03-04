@@ -45,7 +45,7 @@ const VendorRegister = () => {
                 });
         }
         else{
-            const response = await fetch("http://localhost:5000/signup/vendor", {
+            const response = await fetch("https://event-proposal.onrender.com/signup/vendor", {
                 method: 'POST',
                 mode : "cors",
                 headers: {
