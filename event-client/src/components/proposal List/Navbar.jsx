@@ -1,10 +1,15 @@
 import React from 'react'
 import './ProposalList.css'
+import {MdLogout} from 'react-icons/md'
+import { useNavigate } from 'react-router-dom'
 export default function Navbar() {
+    const navigate = useNavigate();
     const name = JSON.parse(localStorage.getItem('vendorInfo'));
-    // console.log(name);
-    return (       
-
+    const logout = ()=>{
+        localStorage.removeItem("jwt");
+        navigate('/');
+    }   
+    return (    
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">LOGO</a>
@@ -17,7 +22,8 @@ export default function Navbar() {
                     <span className="navbar-text me-4 text-primary">
                         {name}                               
                     </span>
-                    <span className='me-5'><img src={require('../../assets/img1.jpg')} alt="" style={{borderRadius: '50%'}} height="50px" width="50px" /></span>                
+                    <span className='me-5'><img src={require('../../assets/img1.jpg')} alt="" style={{borderRadius: '50%'}} height="50px" width="50px" /></span> 
+                    <span className='logout' onClick={logout}><MdLogout/></span>              
                 </div>
             </div>
         </nav>
