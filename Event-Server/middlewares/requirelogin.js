@@ -10,7 +10,7 @@ module.exports = async (req,res,next)=>{
 
        const decoded = jwt.verify(authenticate,secret)
 
-       console.log(decoded.user.contact)
+       //console.log(decoded.user.contact)
        const data = await Vendor.findOne({contact:decoded.user.contact})
        if(!data){
          return res.status(401).send("User not Found")

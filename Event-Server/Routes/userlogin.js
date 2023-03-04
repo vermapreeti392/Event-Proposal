@@ -5,7 +5,8 @@ const jwt = require("jsonwebtoken")
 const dotenv = require("dotenv")
 const router = express.Router()
 dotenv.config()
-const secret = process.env.SECRET_KEY
+const secret = process.env.SECRET_KEY;
+
 router.post("/userlogin", async (req, res) => {
     try {
         const { contact, password } = req.body
@@ -20,16 +21,16 @@ router.post("/userlogin", async (req, res) => {
             bcrypt.compare(password, hash).then(async function (result) {
                 if (result == true) {
                     const token = jwt.sign({
-                        exp: Math.floor(Date.now() / 1000) + (10 * 60),
+                        exp: Math.floor(Date.now() / 1000) + (1000 * 60),
                         data: 'foobar'
                     }, secret);
                     res.status(201).json({
                         token: token,
-                        message: "User successfully loggedin"
+                        message: "User login Successfully"
                     })
                 } else {
                     res.status(401).json({
-                        message: "Invalid credentails"
+                        message: "Invalid credentials"
                     })
                 }
             });
