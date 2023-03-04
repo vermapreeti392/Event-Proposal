@@ -8,6 +8,8 @@ import VendorRegister from './components/Vendor/vendorregister';
 import VendorLogin from './components/Vendor/vendorlogin';
 import UserLogin from './components/User/userlogin';
 import UserRegister from './components/User/userregister';
+import HomePage from './components/home/homePage';
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
       <Route path='/proposalList' element= {<ProposalList />} ></Route>   
       <Route path='/createPrposal' element = {<CreateProposal/>}></Route>
       <Route path='/update/:id' element = {<UpdateProposal/>}></Route>
+      <Route path='/home' element = {<HomePage/>}></Route>
     </Routes>    
     </div>    
     </BrowserRouter>    

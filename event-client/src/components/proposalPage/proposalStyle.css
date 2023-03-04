@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.proposalBlock{
+    display: grid;
+    grid-template-columns: 25.5% 37% 37.5%;
+    grid-column-gap: 10px;
+}
+.itemB{
+    border: 1px solid #E8E8E8;
+    padding: 30px;
+    padding-right: 70px;
+    margin: 10px;
+    text-align: justify;
+    border-radius: 6px;
+}
+.itemA{
+    margin: 10px;
+    text-align: justify;
+
+}
+.secondary{
+    padding: 40px;
+    padding-right: 60px;
+}
+.item{
+    padding-left: 10px;
+}

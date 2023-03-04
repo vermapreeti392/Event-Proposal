@@ -5,6 +5,9 @@ const proposalSchema = require('../models/proposal');
 const { events } = require('../models/vendor');
 
 // posting data
+
+
+
 router.post('/createProposal', requirelogin, async(req,res)=>{
 try{
     const {eventName,place,proposalType,eventType,budget,date_from,date_to,description,
@@ -98,9 +101,8 @@ router.delete('/delete/:id', async(req,res)=>{
      const data = await proposalSchema.findOne({_id: req.params.id})  
          data.remove()
          return res.status(200).json({
-             message: "post deleted successfully"
+             message: "Post deleted successfully"
          })
-    
      }
     catch(e){
      res.status(422).json({
@@ -109,4 +111,16 @@ router.delete('/delete/:id', async(req,res)=>{
      })
     }
  })
+
+router.get('/findAllProposal',requirelogin, async(req,res)=>{
+
+    try {
+        const data = await proposalSchema.find()
+        res.status(200).json({
+            data
+        })
+    } catch (error) {
+        res.status(400).send('Error in fetch proposals')
+    }
+})
 module.exports = router;

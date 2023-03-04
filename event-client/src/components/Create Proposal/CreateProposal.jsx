@@ -87,7 +87,7 @@ const CreateProposal = () => {
         method:"post",
         body:data
     }).then(res=>res.json()).then(data=>{ uploadedImages.push(data.secure_url);
-      // console.log(data.secure_url);     
+      console.log(data.secure_url);     
       const newObj = {...imgurl,uploadedImages}
       setImgurl(newObj);
       console.log(imgurl);
