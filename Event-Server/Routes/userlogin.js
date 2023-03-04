@@ -21,7 +21,7 @@ router.post("/userlogin", async (req, res) => {
             bcrypt.compare(password, hash).then(async function (result) {
                 if (result == true) {
                     const token = jwt.sign({
-                        exp: Math.floor(Date.now() / 1000) + (10 * 60),
+                        exp: Math.floor(Date.now() / 1000) + (1000 * 60),
                         data: 'foobar'
                     }, secret);
                     res.status(201).json({

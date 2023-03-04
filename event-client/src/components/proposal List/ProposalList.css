@@ -14,9 +14,7 @@
 .event-header {
     display: flex;
     justify-content: space-between;
-
 }
-
 .event-header div {
     display: flex;
 }

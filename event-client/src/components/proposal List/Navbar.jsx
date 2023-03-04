@@ -12,7 +12,7 @@ export default function Navbar() {
     return (    
         <nav className="navbar navbar-expand-lg bg-light">
             <div className="container-fluid">
-                <a className="navbar-brand" href="#">LOGO</a>
+                <h4 className="navbar-brand ms-5">LOGO</h4>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
