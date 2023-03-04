@@ -4,6 +4,8 @@ import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Navbar from "../proposal List/Navbar";
 import "./CreateProposal.css"
+import Backdrop from '@mui/material/Backdrop';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const CreateProposal = () => {
   // const navigate = useNavigate()
@@ -20,6 +22,7 @@ const CreateProposal = () => {
   // const [albums, setAlbums] = useState([])
   const [food, setFood] = useState('')
   const [events, setEvents] = useState('')
+  const [open, setOpen] = useState(false)
   
   const [image, setImage] = useState('')
   
@@ -76,6 +79,7 @@ const CreateProposal = () => {
   // upload pic in cloudnary
 
   const shareImage = () => {  
+    setOpen(true)
     
     const data = new FormData();
     for (let i = 0; i < image.length; i++) {
@@ -90,14 +94,18 @@ const CreateProposal = () => {
       console.log(data.secure_url);     
       const newObj = {...imgurl,uploadedImages}
       setImgurl(newObj);
-      console.log(imgurl);
+      // console.log(imgurl);
       if (uploadedImages.length === image.length) {        
         post();      
+        setOpen(false)
        }
     })
-    .catch(e=>console.log(e))
+    .catch((e)=>{
+      console.log(e)
+      setOpen(false)
+    })
     }
-// console.log(localStorage.getItem("jwt"))
+
 }
   
   // for preview of file
@@ -116,6 +124,12 @@ const CreateProposal = () => {
   
   return (
     <>
+    <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={open}
+         >
+        <CircularProgress color="inherit" />
+        </Backdrop>
     <Navbar/>
     <div className="darkBg"
     //  onClick={()=>setModal(false)}

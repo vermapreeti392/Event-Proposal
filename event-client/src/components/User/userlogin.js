@@ -26,70 +26,54 @@ const UserLogin = () => {
                 password: data.password,
                 contact: data.contact
             }).then((res)=>{
-                console.log(res)
+                console.log(res)    
                 if(res.status == 200){
                     window.localStorage.setItem('jwt',res.data.data.token)
-                    navigate("/home")
+                    toast('Login Successfull', {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                    setTimeout(()=>{
+                        navigate("/home")
+                    },2000)
                 }
             }).catch((error)=>{
-                console.log(error)
+                console.log(error.response.status)
+                if(error.response.status === 400 ){
+                    toast.warn('User not Exists', {
+                        position: "top-right",
+                        autoClose: 3000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "dark",
+                        });
+                    }
+
+                    if(error.response.status === 401){
+                        toast.warn('Wrong Password', {
+                            position: "top-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "dark",
+                            });
+                        }    
             })
 
         }
 
-        // const response = await fetch("http://localhost:5000/userlogin", {
-        //     method: 'POST',
-        //     mode: "cors",
-        //     headers: {
-        //         "content-Type": 'application/json',
-        //         "Accept": "application/json"
-        //     },
-        //     body: JSON.stringify({
-        //         password: data.password,
-        //         contact: data.contact,
-        //     })
-        // })
-        // const res = await response.json()
-        // console.log(res)
-        // if(res.message === "user not exists" ){
-        //     toast.warn('User not Exists', {
-        //         position: "top-right",
-        //         autoClose: 3000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //         theme: "dark",
-        //         });
-        // }else if(res.message === "Invalid credentails"){
-        //     toast.warn('Wrong Password', {
-        //         position: "top-right",
-        //         autoClose: 3000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //         theme: "dark",
-        //         });
-        // }else  if(res.data.token) {
-        //     localStorage.setItem("jwt", res.token)
-
-        //     toast('Login Successfull', {
-        //         position: "top-right",
-        //         autoClose: 3000,
-        //         hideProgressBar: false,
-        //         closeOnClick: true,
-        //         pauseOnHover: true,
-        //         draggable: true,
-        //         progress: undefined,
-        //         theme: "light",
-        //     });
-        //     setTimeout(()=>{
-        //         navigate("/home")
-        //     },)
-        // } 
     }
     const handle2 = () => {
         navigate("/")

@@ -4,6 +4,7 @@ import DetailProposal from "../cards/detailProposal";
 import { Box } from "@mui/system";
 import StandardImageList from "../photos/photos";
 import Button from '@mui/material/Button';
+import Navbar from "../proposal List/Navbar";
 
 
 const ProposalPage =(props)=>{
@@ -11,6 +12,7 @@ const ProposalPage =(props)=>{
     return (
 
         <>
+        <Navbar/>
 
         <div className="secondary">
             
@@ -32,7 +34,7 @@ const ProposalPage =(props)=>{
                      console.log("boton clij")   
                     }} variant="outlined">Select</Button></Box>
                 <div className="itemA">
-                  {/* <DetailProposal cardData={props.data}/> */}
+                  <DetailProposal cardData={props.data}/>
                 </div>
                 <div className="itemB">
                     <Box sx={{
@@ -44,7 +46,7 @@ const ProposalPage =(props)=>{
                     }}>
                         Venue and Arrangement
                     </Box>
-                    {/* {props?.data?.description} */}
+                    {props?.data?.description}
                     </div>
                 <div className="itemB">
                     <Box sx={{
@@ -55,7 +57,7 @@ const ProposalPage =(props)=>{
                     }}>
                         Food Preferences
                     </Box>
-                    {/* {props?.data?.food} */}
+                    {props?.data?.food}
                     </div>
                 <div className="item">
                 <Box sx={{
@@ -90,7 +92,7 @@ const ProposalPage =(props)=>{
                     }}>
                         Events
                     </Box>
-                    {/* {props?.data?.events} */}
+                    {props?.data?.events}
                 </div>
 
             </div>
