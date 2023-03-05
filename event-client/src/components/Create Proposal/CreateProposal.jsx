@@ -32,8 +32,8 @@ const CreateProposal = () => {
   //console.log(imgurl)
   
  // toast function
-  const notifyError = () => toast.error("please provide all fields");
-  const notifyMsg = ()=>toast.success("poposal created successfully");
+  const notifyError = () => toast.error("Please Provide all fields");
+  const notifyMsg = ()=>toast.success("Proposal Created Successfully");
 
   const post = async ()=>{
     if(imgurl){        

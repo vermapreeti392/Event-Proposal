@@ -125,3 +125,9 @@ textarea{
 .eve{
     width: 90%;
 }
+/* .cp::-webkit-scrollbar {
+    display: none;
+} */
+textarea::-webkit-scrollbar {
+    display: none;
+}

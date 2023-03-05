@@ -78,4 +78,13 @@
     font-size: xx-large;
     margin-right: 17px;
     margin-bottom: 10px;
+    cursor: pointer;
+}
+.logout:hover{
+    color: red;
+    cursor: pointer;
+}
+.navbar-text{
+    font-size: x-large;
+    text-transform:capitalize
 }

@@ -20,6 +20,7 @@ module.exports = async (req,res,next)=>{
           return res.status(401).send("User not Found")
        }
        req.user = data
+    //    console.log(req.user);
        next()
 
    } catch (error) {

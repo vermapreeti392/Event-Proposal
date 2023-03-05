@@ -1,6 +1,6 @@
-.App {
+/* .App {
   text-align: center;
-}
+} */
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +35,9 @@
   to {
     transform: rotate(360deg);
   }
+}
+.logo-psv{
+  text-align:left;
+  padding-top: 30px;
+  padding-left: 20px;
 }

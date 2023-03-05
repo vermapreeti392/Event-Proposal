@@ -5,9 +5,11 @@ import { Box } from "@mui/system";
 import StandardImageList from "../photos/photos";
 import Button from '@mui/material/Button';
 import Navbar from "../proposal List/Navbar";
+import { Avatar, Grid } from "@mui/material";
 
 
 const ProposalPage =(props)=>{
+    //console.log(props.data);
    
     return (
 
@@ -17,12 +19,13 @@ const ProposalPage =(props)=>{
             
             <div className="proposalBlock">
                     <Box onClick={()=>{props.proposalClicked(false)}} sx={{
-                        pl:1.5,
+                        // pl:1.5,
                         pb:1,
+                        cursor: 'pointer',
                         fontWeight:"600",
                         fontSize:20,
                         color:"#484848",
-                    }}>{`Proposal < John Contract`}</Box>
+                    }}>{`Proposal < ${props.data.postedBy.name} Contract`}</Box>
                     <Box></Box>
                     <Box sx={{
                         pl:49
@@ -43,7 +46,7 @@ const ProposalPage =(props)=>{
                         color:"#484848",
                         textAlign:"justify"
                     }}>
-                        Venue and Arrangement
+                        Venue and Arrangements
                     </Box>
                     {props?.data?.description}
                     </div>
@@ -66,7 +69,7 @@ const ProposalPage =(props)=>{
                         fontSize:20,
                         color:"#484848"
                     }}>
-                      My Album
+                      My Albums
                     </Box>
                   <StandardImageList photos={props?.data?.albums[0].array}/>
                 
@@ -78,9 +81,37 @@ const ProposalPage =(props)=>{
                         fontSize:20,
                         color:"#484848"
                     }}>
-                        Contact | 12
+                        Contact | 3
                     </Box>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas consequuntur veritatis incidunt ratione reprehenderit, facere eveniet beatae nisi obcaecati tempora nostrum saepe quibusdam illo fugit, id rerum unde officia? Quaerat beatae cum mollitia reprehenderit tempore cumque, odit itaque nostrum sint provident qui eaque ex, perferendis delectus facere? Ipsam, aliquid atque?
+                    <Grid container>
+                        <Grid item xs={4} sx={{
+                            display:'flex',
+                            justifyContent: 'center'
+                        }}><Avatar sx={{
+                            height:75,
+                            width:75,
+                            mb:2,
+                        }}>P</Avatar></Grid>
+                        <Grid item xs={4} sx={{
+                            display:'flex',
+                            justifyContent: 'center'
+                        }}><Avatar sx={{
+                            height:75,
+                            width:75
+                        }}>S</Avatar></Grid>
+                        <Grid item xs={4} sx={{
+                            display:'flex',
+                            justifyContent: 'center'
+                        }}><Avatar sx={{
+                            height:75,
+                            width:75
+                        }}>V</Avatar></Grid>
+                        <Grid item xs={4} sx={{
+                            pl:4
+                        }}>{props?.data?.postedBy.contact}</Grid>
+                        <Grid item xs={4}>+91 XXXXXXXXXX</Grid>
+                        <Grid item xs={4}>+91 XXXXXXXXXX</Grid>
+                    </Grid>
                 </div>
                 <div className="itemB">
                    <Box sx={{
@@ -93,14 +124,7 @@ const ProposalPage =(props)=>{
                     </Box>
                     {props?.data?.events}
                 </div>
-
             </div>
-
-
-
-
-
-
         </div>
         </>
     )

@@ -41,7 +41,7 @@ export default function DetailProposal(props) {
           fontWeight:'600',
           pb:1
         }}>
-          Vendor Name
+          {props.cardData.postedBy.name}
         </Grid>
         <Grid item xs={3} sx={{
           fontSize:12,
@@ -54,7 +54,7 @@ export default function DetailProposal(props) {
           fontSize:14,
           fontWeight:'500'
         }}>
-          Preeti@gmail.com
+          {props.cardData.postedBy.email}
         </Grid>
       </Grid>
       </Box>

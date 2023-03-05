@@ -13,6 +13,7 @@ export default function ProposalList() {
   const navigate = useNavigate();
   const [proposal, setProposal] = useState([]); 
   const [searchProposal, setSearchProposal] = useState('');
+  const [deleteItem, setDeleteItem] = useState(false)
   const notifyMsg = ()=>toast.success("Deleted Successfully");
   useEffect( ()=>{
     const getItem = async () => {
@@ -38,7 +39,8 @@ export default function ProposalList() {
       handleSearch();
     }
     
-  }, [searchProposal])
+    
+  }, [searchProposal, deleteItem])
   
   const handleSearch = ()=>{
     const data = proposal.filter(proposals=>
@@ -54,7 +56,7 @@ export default function ProposalList() {
       .then(res=>res.json())
       .then(data=>{
         setProposal(proposal.filter(proposal => proposal.id!= id));
-        window.location.reload()       
+        setDeleteItem(!deleteItem)           
         notifyMsg();
       })
   }

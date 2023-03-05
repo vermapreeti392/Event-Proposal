@@ -21,18 +21,19 @@ const HomePage =()=>{
 
     useEffect(()=>{
     const token = window.localStorage.getItem("jwt")
-    console.log("home page")
-    console.log(token)
+    //console.log("home page")
+    //console.log(token)
     let config = {
         headers: {
           Authenticate: token,
         }
     }
 
-    axios.get("https://event-proposal.onrender.com/findAllProposal" , config).then((res) => {
+    axios.get("http://localhost:5000/findAllProposal" , config).then((res) => {
         
         if (res.status === 200) {
-            console.log(res.data.data[3].albums[0].array[0])
+            //console.log(res.data.data[3].albums[0].array[0])
+            console.log(res.data.data);
             setProposal(res.data.data)
 
         }
